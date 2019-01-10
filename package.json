@@ -1,0 +1,70 @@
+{
+	"name": "rename-plus",
+	"displayName": "Rename Plus",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.renamePlus.edit"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.renamePlus.edit",
+				"category": "File",
+				"title": "Rename Plus"
+			},
+			{
+				"command": "extension.renamePlus.execute",
+				"category": "File",
+				"title": "Execute"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "extension.renamePlus.edit",
+					"group": "7_modification"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "extension.renamePlus.execute",
+					"when": "resourceLangId == renameplus"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "renameplus",
+				"configuration": "./language-configuration.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^10.12.18",
+		"prettier": "^1.15.3",
+		"tslint": "^5.12.0",
+		"tslint-config-standard": "^8.0.1",
+		"typescript": "^3.2.2",
+		"vscode": "^1.1.26"
+	},
+	"dependencies": {
+		"@types/fs-extra": "^5.0.4",
+		"fs-extra": "^7.0.1"
+	}
+}
